@@ -7,6 +7,37 @@
 - 날짜, 지역에 따른 공연 목록 출력
 - 라인업 가수들 정보까지 출력
 
+## Use Case
+```mermaid
+graph TB
+	Client((("고객")))
+	Stage["공연 찾기 페이지"]
+	StageInfo["공연 상세 정보 모달"]
+	SearchStage["공연 정보\n조회"]
+	SearchStageTraffic["공연 지역\n교통량 조회"]
+	SearchStageRestaurant["공연 지역\n맛집 조회"]
+
+	Member((("회원")))
+	ThumbsUp["좋아요\n기능"]
+	Bookmark["즐겨찾기\n기능"]
+	Epilogue["사진 및 감상평을\n올리는 게시판"]
+	MyStavage["다녀온 공연\n보기"]
+	
+	Client-->Stage
+	Stage--장르/지역/기간 선택-->StageInfo
+	StageInfo-->SearchStage
+	StageInfo-->SearchStageTraffic
+	StageInfo-->SearchStageRestaurant
+
+	Client--로그인-->Member
+	Member-->Stage
+	Stage--회원-->Bookmark
+	Stage--회원-->ThumbsUp
+	StageInfo--회원-->Bookmark
+	StageInfo--회원-->ThumbsUp
+	Member---->Epilogue
+	Member---->MyStavage
+```
 
 ## Tech Used
 
